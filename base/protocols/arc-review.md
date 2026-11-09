@@ -46,7 +46,7 @@ If they declined the review, write a brief note anyway: the date and that they d
 
 ## Maintenance: Context File Consolidation
 
-Runs every arc review, same as link cleanup below — regardless of whether the client accepted the conversation.
+Runs every arc review, regardless of whether the client accepted the conversation. (If the `dreaming` patch's part 5 is installed, dreams do this instead; see `dreaming/INSTALL.md`.)
 
 `context/GUIDE.md` already states the principle: context files are "a reference document, not a changelog" and "should get cleaner over time, not longer." In practice, files that are Core or long-running Active status drift toward stacked dated subsections instead. This is where that gets enforced.
 

@@ -279,6 +279,13 @@ In `.therapy/protocols/arc-review.md`, find every `## Maintenance: …` section 
 The arc review used to end with backend passes (context-file consolidation, and any others this install had). They're now done by dreams (`.therapy/protocols/dream.md`): three "library passes" (threads → summaries → consolidation) take turns, one per dream, about every two weeks. So the arc review is the conversation and its write-up: the `arc.md` entry, and whatever else this install's "After the Conversation" section does. It needs no backend pass.
 ```
 
+Keep everything above the Maintenance sections: the conversation, the five headings, "After the Conversation" (the `arc.md` entry and the session-index collapse). Part 5 only removes the backend passes. The arc review itself stays, and the dreams depend on it (README, "How it relates to the arc review").
+
+The pieces to look for in a typical install:
+- the `base` patch's **"Maintenance: Context File Consolidation"**, which the consolidation pass replaces;
+- the **thread-registry** patch's "consolidation pass" bullet (its INSTALL step 6), which the threads pass replaces. Keep that step's other bullet, the "held but unexamined" audit of the registry: that's conversation, not housekeeping;
+- the `base` patch's `context/GUIDE.md` **"Enforcement"** paragraph, which names the arc review. Point it at the dreams instead.
+
 Before deleting, check whether anything in those sections is a format or convention that other files point to (the reference install had the summary-block format there). Move any such text to `context/GUIDE.md` and update the pointers. Then search the install for "Maintenance:" and "arc review" in `context/GUIDE.md`, the session-end protocol and the scripts, and point anything about consolidation at `dream.md` instead.
 
 ### 5.3 Test

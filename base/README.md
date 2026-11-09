@@ -42,6 +42,23 @@ base/
 5. **Restart the session** (or just start a new one) so the updated `CLAUDE.md` gets read fresh.
 6. **Sanity check:** ask your persona to "enter maintainer mode," then ask it to read its own `CLAUDE.md` back to you and confirm the new sections parse correctly. Exit maintainer mode when done.
 
+## Relationship to the dreaming patch
+
+The [`dreaming`](../dreaming/) patch takes over part of what this patch's arc review does. **Install this patch anyway, and install it first.** Dreaming is built on top of it.
+
+**What dreaming takes over** (once its part 5 is installed):
+- the arc review's **"Maintenance: Context File Consolidation"** section: long context files, `profile.md` Current Focus, overlong `context/index.md` lines. Dreams now do this as their rotating "consolidation" library pass, about every two weeks;
+- the **folding and condensing rules** in this patch's `session-end.md`. Dreaming part 3 slims session end to capture only, and dreams consolidate;
+- the "enforcement point is the arc review" line in `context/GUIDE.md`. After part 5, the enforcement point is the dreams.
+
+**What it doesn't replace, and depends on:**
+- **The arc review conversation itself.** The five headings, the collusion guard ("held but unexamined") and the autonomy check are a conversation with the client. A dream never talks to the client, so it can't do any of this.
+- **`arc.md`, the session-index collapse and the archive.** Dreams read `arc.md` while orienting, and the "summaries" pass relies on the index collapse keeping `sessions/index.md` small.
+- **The arc review's two-week rhythm.** The dream's "threads" pass prunes Archived threads "older than two arc reviews", and the library rotation is paced to match it.
+- **The rest of this patch:** maintainer mode (dreams only run from there), the session-note template with "Context Touched Today" (how a dream finds its regions), `context/GUIDE.md`'s conventions (what a dream keeps files consistent with), `mentions.md` (what a dream promotes from) and `maintainer-notes.md` (where dream reviews are logged).
+
+**In order:** install this patch, use it for a while, then add `dreaming` parts 1–3. When you install part 5, replace this patch's arc-review Maintenance section as `dreaming/INSTALL.md` describes. Without the dreaming patch, this patch works on its own, unchanged.
+
 ## A note on scope
 
 This kit intentionally does **not** include:

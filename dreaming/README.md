@@ -5,6 +5,7 @@ Offline memory consolidation for an Inner Dialogue install. It runs between sess
 Built for Sage, the reference install, on 2026-10-30, after researching how "dreaming" works for AI agents. Anthropic, Letta and several research papers use the idea in some form; `background/research-synthesis.md` has the research. It's packaged here so any Inner Dialogue install can have it. **It contains no personal content**: everything is genericized to "the client" and "the assistant".
 
 **Prerequisites:**
+- the `base` patch, including its arc review (see "How it relates to the arc review" below);
 - maintainer mode (`base` patch);
 - session notes with a "Context Touched Today" list (`base` patch, `session-end.md`);
 - a git repo;
@@ -39,6 +40,25 @@ Research on agent memory has converged on a fix: **separate capture from consoli
 - Decide between two conflicting things about the client; it asks instead.
 - Raise a boundary subject anywhere new.
 - Merge itself, or run in a cloud session.
+
+## How it relates to the arc review
+
+Dreaming partly supersedes the `base` patch's arc review, but it doesn't replace it. **Install `base` first, and keep its arc review.**
+
+- **Superseded:**
+  - the arc review's backend housekeeping: "Maintenance: Context File Consolidation", which moves to the dreams' rotating library pass in part 5;
+  - the `thread-registry` patch's arc-review "consolidation pass", which becomes the "threads" library pass;
+  - the folding rules in `base`'s session end, which part 3 moves to dreams.
+- **Not superseded:** the arc review conversation. The zoom-out against the client's goal, the collusion guard ("held but unexamined") and the autonomy check all need the client in the room, and a dream never talks to the client. The `arc.md` entry and the session-index collapse stay with the arc review too.
+- **Dreaming relies on `base`:**
+  - maintainer mode, which is the only place a dream runs;
+  - the session-note template's "Context Touched Today", which is how a dream finds its regions;
+  - `context/GUIDE.md` conventions, which dreams keep files consistent with;
+  - `mentions.md`, for PROMOTE;
+  - `arc.md`, which dreams read while orienting;
+  - the two-week arc rhythm, which the threads pass and the rotation are paced to.
+
+So after part 5 the split is: the arc review is the conversation, and dreams are the housekeeping.
 
 ## What's in the box
 

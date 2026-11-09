@@ -79,6 +79,8 @@ If this setup has a periodic zoom-out review (the reference calls it the "arc re
 
 If there's no periodic review, skip this entirely — the feature is fully functional without it (session-end reconciliation keeps the registry honest).
 
+**If the `dreaming` patch's part 5 is installed:** skip the consolidation-pass bullet, or remove it if it's already in. Dreams do the same work as their "threads" library pass, across the whole registry, about every two weeks. Keep the first bullet: auditing the registry for what's held but unexamined is part of the arc review conversation, and a dream can't do it.
+
 ### 7. Compaction / resume protocol (if present)
 
 If this setup has a post-compaction or resume protocol that reloads key files after the context window is summarized, add `context/threads.md` to that reload set (near wherever it reloads the context index or recent sessions), noting it holds the canonical open-thread set.
