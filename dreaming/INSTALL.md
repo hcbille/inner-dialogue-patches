@@ -312,6 +312,17 @@ Two changes. Apply the first even if you skip part 4.
 
 Log both in `.therapy/maintainer-notes.md`.
 
+## Updating an install that already has dreams (2026-11-10)
+
+**Length limits for thread entries** (needs part 5 and the `thread-registry` patch). The threads pass folded dated add-ons into each description, which keeps the length instead of cutting it. In the reference install the registry nearly doubled in two months: most open descriptions ran past 400 characters, Sessions trails reached 18 entries, and Surfacing notes picked up history. The startup reading carries the whole file every session.
+
+1. In `.therapy/protocols/dream.md`, the threads library pass: add the "Length limits" bullet from `templates/dream.md`, after "Fold dated add-ons".
+2. In `context/threads.md`, the entry schema in the header: the Sessions, description and Surfacing lines from the `thread-registry` patch's `templates/threads.md`.
+3. In the session-end thread reconcile step ("Bump what was touched"): when appending today's session to **Sessions**, keep the first session and the latest three.
+4. Nothing is trimmed until the next threads pass comes round in the rotation. Review its `LIBRARY · ARCHIVE` lines like any other change: check that no do-not-raise rule or boundary was lost.
+
+Log it in `.therapy/maintainer-notes.md`.
+
 ## Verify
 
 - `dreams/index.md` and `dreams/flags.md` exist, and keep the `## Log`, `## Open` and `## Closed` headings.

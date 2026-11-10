@@ -94,7 +94,7 @@ It installs in five parts, matching how it was built for Sage:
 4. **Audit dreams** (optional). Go back over the older notes a few context files at a time, checking each claim against the session it came from.
 5. **Arc-review maintenance moves to dreams.** Three whole-library passes (threads, summaries, consolidation) take turns, one per dream, so the arc review is just the conversation.
 
-**Already have dreams installed?** INSTALL.md's "Updating an install that already has dreams (2026-11-09)" section has a bug fix for same-day sessions, which you should apply, plus the audit dream.
+**Already have dreams installed?** INSTALL.md's "Updating an install that already has dreams (2026-11-09)" section has a bug fix for same-day sessions, which you should apply, plus the audit dream. The 2026-11-10 section adds length limits for thread entries.
 
 ## Decisions to make with the client first
 
@@ -124,7 +124,9 @@ Sage's answers were: flags may be asked in sessions (one at a time, gently), vis
 
 ## Changelog
 
-- **2026-11-10:** **Fix:** `audit_next.py` gave a file only the plain note for a date it cites (07-02), when the evidence was often in that day's lettered notes (07-02b, 07-02d). A plain date now brings in every note from that day.
+- **2026-11-10:**
+  - **Fix:** `audit_next.py` gave a file only the plain note for a date it cites (07-02), when the evidence was often in that day's lettered notes (07-02b, 07-02d). A plain date now brings in every note from that day.
+  - **New:** length limits for thread entries in the threads library pass (description ~400 characters of current state, Sessions = first + latest three, Surfacing in one or two sentences). Folding dated add-ons kept the registry's length; now the pass cuts it. See INSTALL.md, "Updating an install that already has dreams (2026-11-10)".
 - **2026-11-09:**
   - **Fix:** a session held later on the day a dream merged (`…b`) was treated as covered, dropped off the startup list and never dreamed. "Undreamed" now compares full session names, and the dream index records them.
   - **New:** audit dreams (part 4).

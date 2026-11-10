@@ -60,7 +60,7 @@ Find this setup's session-end / wrap-up protocol. Add a **reconcile step** (plac
 
 **(b) The reconcile step itself.** Read `context/threads.md`, then from today's session:
 
-1. **Bump what was touched** — for any existing entry that came up today, set *Last surfaced* to today and append today's session file to its **Sessions** list. (This is what keeps a live thread from being re-surfaced next week.)
+1. **Bump what was touched** — for any existing entry that came up today, set *Last surfaced* to today and append today's session file to its **Sessions** list, keeping the first session and the latest three. (This is what keeps a live thread from being re-surfaced next week.)
 2. **Add genuinely-new standing threads** — for anything in today's "Threads to Revisit" snapshot expected to outlive this session, add an entry per the schema (set Type, Opened = today, Last surfaced = today, Subjects, Sessions, description, Surfacing rule). Skip anything that opened *and* closed within today's session.
 3. **Close what resolved** — set Status: Closed (today), move to `## Archived` with a one-line outcome.
 4. **Shelve what they set down** — set Status: Shelved (today), adjust the Surfacing rule.

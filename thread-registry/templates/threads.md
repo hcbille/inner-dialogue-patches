@@ -18,9 +18,9 @@ The canonical registry of open threads — the standing topics, questions, and l
 - **Type:** therapeutic | logistical
 - **Opened:** YYYY-MM-DD · **Last surfaced:** YYYY-MM-DD
 - **Subjects:** <the people/concepts this thread involves>
-- **Sessions:** sessions/YYYY-MM-DD.md, sessions/YYYY-MM-DD.md
-- <1–3 line description of what the thread is and where it stands>
-- **Surfacing:** <how/whether to raise it — the rule for this specific thread>
+- **Sessions:** <the first session, then the latest three: sessions/YYYY-MM-DD.md, …>
+- <1–3 lines (~400 characters): what the thread is and where it stands now. History stays in the session notes>
+- **Surfacing:** <how/whether to raise it, in one or two sentences — the rule for this specific thread>
 ```
 
 > **Subjects field:** reference the relevant people/concepts using whatever cross-reference convention this setup already uses — plain names, or however it links context files. (The reference build used Obsidian `[[double-bracket]]` links; if this setup isn't on that, just use plain names or its own linking style.)

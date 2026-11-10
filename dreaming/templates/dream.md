@@ -127,6 +127,12 @@ The pass comes after the in-range regions. It's bound by every ground rule, its 
   - Cross-check every Open entry against the notes since its *Last surfaced*. Resolved since but still Open → Closed (to Archived, with a one-line outcome). Something the client set down → Shelved.
   - Fix *Last surfaced* dates and Sessions trails that don't match the notes.
   - Fold dated add-ons into the description as current state.
+  - **Length limits.** Folding keeps the length, so cut too. Each entry should fit these:
+    - **Description:** about 3 lines (~400 characters) saying what the thread is and where it stands now. History goes; the session notes keep it. Keep the client's own words where they carry the thread, and drop the rest of the dated detail.
+    - **Sessions:** the first session plus the latest three, in date order. The full trail is a search of `sessions/` away.
+    - **Surfacing:** the rule for raising it, in one or two sentences. No history, and no repeating the description.
+    - Never cut a do-not-raise rule, a boundary, or anything a `.therapy/memory/` file points at. When a thread can't fit without losing what makes it work, it's probably ripe for a PROMOTE.
+    - Label these `LIBRARY · ARCHIVE`, one line per entry, with its bytes before → after.
   - Ripe threads get a PROMOTE.
 - **summaries:** the startup reading itself:
   - If the install uses summary blocks: check every one against its file as it now stands (REFRESH-SUMMARY), keeping every handling rule. Any Core or Active file over ~8 KB without one gets one.
