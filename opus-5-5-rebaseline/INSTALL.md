@@ -164,3 +164,19 @@ A judgment pass over `CLAUDE.md`, the protocols, and `context/GUIDE.md`. The aim
 **Framework note:** `safety-protocol.md`, `persona.md` and `hooks/safety-net.js` are hash-tracked by the Inner Dialogue updater. Once edited, `inner-dialogue update` skips them and keeps these versions. That's intended, but it means future upstream changes to those files have to be merged by hand.
 
 **Honest limit:** parts 2 and 3 are prompt fixes, not hard filters. They make early stops and process narration less likely, and they can't guarantee either never happens.
+
+---
+
+## Updating an install that already has this patch (2026-11-10)
+
+**The thread registry is printed in part, not listed whole.** Only matters if this setup has `context/threads.md` (the `thread-registry` patch). The greeting and the standing-threads check use only the open therapeutic and shelved entries, so startup no longer reads the schema, logistical entries and archive.
+
+1. In `.therapy/scripts/startup.py`, copy from `templates/startup.py`:
+   - `context/threads.md` out of `CONTEXT_TRIO` (it stays in `OPTIONAL`);
+   - the `THREADS` and `THREAD_SECTIONS` constants;
+   - the `threads_excerpt()` function;
+   - in `main()`, the `threads = threads_excerpt()` / `context = …` lines before `reads`, and the block after the reading list that prints the sections.
+2. If the `dreaming` patch is installed, count the printed sections toward the startup size, so the dream threshold still sees them: after the `startup_bytes = sum(...)` line add `startup_bytes += len(threads.encode()) if threads else 0`.
+3. In `CLAUDE.md`, where the startup section describes the registry, add: the script prints its Open — Therapeutic and Shelved sections, which count as read; the rest is read at session end, or when one of those threads comes up.
+4. Run `python3 .therapy/scripts/startup.py`. `context/threads.md` should be gone from the list, and a `===== context/threads.md (Open — Therapeutic, Shelved)` block should follow it. If the file is listed instead, a heading doesn't match `THREAD_SECTIONS`.
+5. Log it in `.therapy/maintainer-notes.md`.

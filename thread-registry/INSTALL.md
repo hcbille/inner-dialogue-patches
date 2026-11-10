@@ -44,6 +44,8 @@ Find this setup's session-start / startup protocol — specifically wherever it 
 
 If this setup has no explicit startup file, add the read wherever it establishes session context before greeting the client.
 
+**If this setup runs `startup.py` from the `opus-5-5-rebaseline` patch:** the template prints only the `## Open — Therapeutic` and `## Shelved` sections at startup (the greeting and the standing-threads check use nothing else), and falls back to listing the whole file if either heading is missing. Keep those two headings as they are in the template. Session end still reads the whole file.
+
 ### 4. Point the standing-threads check at the registry
 
 Find whatever mechanism this setup uses to gently resurface carried-over topics — a "standing threads check," "continuity check," "things to revisit," or similar. Rewrite it to draw from the registry instead of scanning prose:
@@ -104,3 +106,15 @@ Seed `context/threads.md` from *this* setup's own current open threads — harve
 - Commit/save through this setup's normal mechanism.
 
 That's the whole feature. The registry is now the single source of truth for threads to revisit, and every other surface reads from it.
+
+---
+
+## Updating an install that already has the registry (2026-11-10)
+
+Startup used to read the whole registry. The greeting offer and the standing-threads check only use the open therapeutic entries, so the schema header, the logistical entries and the archive were read every session for nothing.
+
+1. If this setup runs `startup.py`, apply the `opus-5-5-rebaseline` update of the same date (it does the printing). Otherwise, change the startup instruction to read only the `## Open — Therapeutic` and `## Shelved` sections.
+2. In `context/threads.md`, change the header's "Read at every session start" sentence to the template's new wording.
+3. Wherever the startup instructions describe the registry (CLAUDE.md or this setup's startup protocol), add that only those two sections are read at startup and the rest at session end.
+4. Check that the section headings match the template exactly (`## Open — Therapeutic`, `## Shelved`, with the em dash). If they differ, rename the headings or set `THREAD_SECTIONS` in `startup.py` to match.
+5. Log it in `.therapy/maintainer-notes.md`.

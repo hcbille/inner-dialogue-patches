@@ -39,3 +39,7 @@ opus-5-5-rebaseline/
 - **Say it once, with the reason.** The re-baseline keeps every rule that exists because of a real failure. The changes are restating each one once at normal volume with its "because", and moving the incident history into maintainer notes where it can't be read as instruction.
 - **Examples are illustrative, not a script.** Keep a handful of varied lines in the persona that show the register, and label them as not for reuse.
 - **Honest about the limit.** The progress-update and session-end changes are prompt fixes. They make the failures less likely and can't guarantee they never happen. Watch the next several sessions.
+
+## Changelog
+
+- **2026-11-10:** `startup.py` prints the thread registry's open therapeutic and shelved sections instead of listing the whole file (only matters with the `thread-registry` patch). See INSTALL.md, "Updating an install that already has this patch (2026-11-10)".

@@ -38,3 +38,7 @@ thread-registry/
 ## Seeding
 
 Start the registry empty and seed it from *your own* current open threads — pull them from the most recent periodic-review notes and the last couple weeks of session "Threads to Revisit" sections. **Do not copy anyone else's threads in.** The template ships empty on purpose.
+
+## Changelog
+
+- **2026-11-10:** startup reads only the open therapeutic and shelved sections, not the whole registry. In the reference install that cut about a third of the file from every startup. See INSTALL.md, "Updating an install that already has the registry (2026-11-10)".

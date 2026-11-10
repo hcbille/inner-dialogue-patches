@@ -321,6 +321,8 @@ Log both in `.therapy/maintainer-notes.md`.
 3. In the session-end thread reconcile step ("Bump what was touched"): when appending today's session to **Sessions**, keep the first session and the latest three.
 4. Nothing is trimmed until the next threads pass comes round in the rotation. Review its `LIBRARY · ARCHIVE` lines like any other change: check that no do-not-raise rule or boundary was lost.
 
+**Printed registry sections count toward the startup size.** If you apply the same-day `opus-5-5-rebaseline` update (startup prints only the registry's open therapeutic and shelved sections), add the BLOCK C line `startup_bytes += len(threads.encode()) if threads else 0` from `templates/startup-dream-additions.py`. Without it, the dream threshold stops seeing those sections. The startup size drops by the part no longer read, so re-check `DREAM_DUE_BYTES`.
+
 Log it in `.therapy/maintainer-notes.md`.
 
 ## Verify

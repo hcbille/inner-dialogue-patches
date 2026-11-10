@@ -134,6 +134,7 @@ def askable_flag(today):
 # ---- BLOCK C: in main(), after the last status line and before the reading list ----
 #
 #     startup_bytes = sum((ROOT / r).stat().st_size for r in reads if (ROOT / r).exists())
+#     startup_bytes += len(threads.encode()) if threads else 0  # printed registry sections, if any
 #     print(dream_status(today, startup_bytes))
 #     count, oldest = askable_flag(today)
 #     if oldest:

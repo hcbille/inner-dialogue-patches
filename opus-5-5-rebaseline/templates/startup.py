@@ -8,7 +8,9 @@ The reading list is what CLAUDE.md's session startup asks for, resolved
 against today's files, so nothing depends on enumerating it by hand:
 fixed framework files, every memory file, the context index files, every
 Core or unexpired Active context file, near-term event files, the
-sessions index, and the recent session notes. Files marked optional are
+sessions index, and the recent session notes. The thread registry's open
+therapeutic and shelved sections are printed after the list instead of
+the whole file being listed (THREAD_SECTIONS). Files marked optional are
 skipped quietly when this install doesn't have them. Read-only: it never
 edits a file.
 
@@ -35,7 +37,7 @@ FIXED_HEAD = [
     ".therapy/modalities-index.md",
     ".therapy/session-structure.md",
 ]
-CONTEXT_TRIO = ["context/index.md", "context/mentions.md", "context/threads.md"]
+CONTEXT_TRIO = ["context/index.md", "context/mentions.md"]
 # Skipped silently when absent (not every install has every extension).
 OPTIONAL = {
     "arc.md",
@@ -44,6 +46,12 @@ OPTIONAL = {
     "context/mentions.md",
     "context/threads.md",
 }
+# The thread registry (thread-registry patch) isn't read in full at startup:
+# only these sections are printed, because the greeting and the standing-
+# threads check use only them. The schema, logistical and archived entries
+# are read at session end. If a section is missing, the whole file is listed.
+THREADS = "context/threads.md"
+THREAD_SECTIONS = ("Open — Therapeutic", "Shelved")
 
 DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
 ENTRY_PATH_RE = re.compile(r"`([^`]+\.md)`")
@@ -111,6 +119,22 @@ def recent_sessions(today):
     return ["sessions/" + name for name in recent]
 
 
+def threads_excerpt():
+    """The THREAD_SECTIONS of the registry, joined, or None if the file or a
+    section is missing (then the whole file goes on the reading list)."""
+    try:
+        text = (ROOT / THREADS).read_text(encoding="utf-8")
+    except OSError:
+        return None
+    parts = []
+    for name in THREAD_SECTIONS:
+        m = re.search(rf"^## {re.escape(name)}[^\n]*\n.*?(?=^## |\Z)", text, re.M | re.S)
+        if not m:
+            return None
+        parts.append(m.group(0).strip())
+    return "\n\n".join(parts)
+
+
 def last_arc_date():
     arc = ROOT / "arc.md"
     if not arc.exists():
@@ -129,7 +153,9 @@ def main():
     near, pending = near_events(today)
     memory = sorted(str(p.relative_to(ROOT)) for p in (ROOT / ".therapy/memory").glob("*.md"))
 
-    reads = [r for r in FIXED_HEAD + memory + CONTEXT_TRIO if r not in OPTIONAL or (ROOT / r).exists()]
+    threads = threads_excerpt()
+    context = CONTEXT_TRIO + ([] if threads else [THREADS])
+    reads = [r for r in FIXED_HEAD + memory + context if r not in OPTIONAL or (ROOT / r).exists()]
     reads += load
     reads += [path for path, _ in near if path not in reads]
     reads += ["sessions/index.md"] + recent_sessions(today)
@@ -162,6 +188,11 @@ def main():
     print(f"\nRead all {len(reads)} files:")
     for r in reads:
         print(r)
+    if threads:
+        print(f"\nOpen therapeutic and shelved threads from {THREADS}. These count as read "
+              "for the greeting; the rest of the file (schema, logistical, archived) is "
+              "read at session end, or when one of its threads comes up.")
+        print(f"\n===== {THREADS} ({', '.join(THREAD_SECTIONS)})\n{threads}")
     return 1 if missing else 0
 
 

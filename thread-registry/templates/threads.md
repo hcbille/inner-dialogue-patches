@@ -2,7 +2,7 @@
 
 The canonical registry of open threads — the standing topics, questions, and loose ends that are meant to **outlive the session they were named in**. This is the single source of truth for "things to come back to": the per-session "Threads to Revisit" notes are just daily snapshots, and (if this setup has a periodic/arc review) its "held but unexamined"-style list is a periodic audit *of this file*, not a separate list.
 
-**Read at every session start** so the open set is in context before the greeting, and reconciled at session end. Like `context/mentions.md`, this is a protocol-referenced tracking file — not a Core subject, not listed in `context/index.md`.
+**At session start** the open therapeutic and shelved sections are read (printed by `startup.py` if this setup has one), so the open set is in context before the greeting; the whole file is read and reconciled at session end. Like `context/mentions.md`, this is a protocol-referenced tracking file — not a Core subject, not listed in `context/index.md`.
 
 > Adapt "the client" throughout to whatever this setup calls the person, and use their actual pronouns. Keep everything else.
 
