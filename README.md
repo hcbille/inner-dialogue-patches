@@ -27,6 +27,7 @@ Or work through `INSTALL.md` by hand.
 | [`base`](base/) | Maintainer mode, a richer session-end protocol, arc reviews (a zoom-out every ~2 weeks), a context-library guide, `mentions.md`. | — |
 | [`opus-5-5-rebaseline`](opus-5-5-rebaseline/) | **Crisis resources for the client's own country** (the stock list is US-only), a startup script that builds the reading list, and a re-tune for Claude Opus 5.5. | — |
 | [`narration-hardening`](narration-hardening/) | A top-level rule against narrating process or describing the client in the third person in messages meant for them. | — |
+| [`visible-edits`](visible-edits/) | All changes to the install's files go through the Edit tool (Write for new files), never shell scripts, so the client can see each one. | — |
 | [`momentum-protection`](momentum-protection/) | Offer a stop-or-continue check only when the person shows a real sign of wanting to stop, not whenever the subject gets heavy. | — |
 | [`thread-registry`](thread-registry/) | One canonical file for threads to revisit, gently surfaced when they go stale. | — |
 | [`no-topic-greeting-offer`](no-topic-greeting-offer/) | When the client opens with a plain hello, offer up to two open threads as optional starting points. | `thread-registry` |
@@ -40,7 +41,7 @@ If you're outside the US, start with part 1 of `opus-5-5-rebaseline`.
 
 1. `base`
 2. `opus-5-5-rebaseline` (part 1 at least)
-3. `narration-hardening`, `momentum-protection`
+3. `narration-hardening`, `momentum-protection`, `visible-edits`
 4. `thread-registry`, then `no-topic-greeting-offer`
 5. `near-term-event-surfacing`, `context-loader`
 6. `dreaming`, in its five parts, after a few weeks of sessions
