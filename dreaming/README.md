@@ -74,6 +74,7 @@ dreaming/
     dreams-index.md                → dreams/index.md
     dreams-flags.md                → dreams/flags.md
     startup-dream-additions.py     → pasted into .therapy/scripts/startup.py (part 3)
+    dream_metrics.py               → .therapy/scripts/dream_metrics.py   (part 3)
     dream-audit.md                 → .therapy/protocols/dream-audit.md   (part 4)
     audit_next.py                  → .therapy/scripts/audit_next.py      (part 4)
     dreams-audit.md                → dreams/audit.md                     (part 4)
@@ -128,6 +129,7 @@ Sage's answers were: flags may be asked in sessions (one at a time, gently), vis
   - **Fix:** `audit_next.py` gave a file only the plain note for a date it cites (07-02), when the evidence was often in that day's lettered notes (07-02b, 07-02d). A plain date now brings in every note from that day.
   - **New:** length limits for thread entries in the threads library pass (description ~400 characters of current state, Sessions = first + latest three, Surfacing in one or two sentences). Folding dated add-ons kept the registry's length; now the pass cuts it. See INSTALL.md, "Updating an install that already has dreams (2026-11-10)".
   - **New:** when startup prints only part of the thread registry (`opus-5-5-rebaseline`, same date), those bytes still count toward the dream threshold (BLOCK C).
+  - **New:** `dream_metrics.py`, which prints every number a dream report records, measured the same way before and after, including the startup size projected after merge. Replaces summing file sizes by hand.
 - **2026-11-09:**
   - **Fix:** a session held later on the day a dream merged (`…b`) was treated as covered, dropped off the startup list and never dreamed. "Undreamed" now compares full session names, and the dream index records them.
   - **New:** audit dreams (part 4).

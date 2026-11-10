@@ -55,7 +55,7 @@ Read this whole file before starting. Work through the phases in order.
    - **If the range is empty** (no session notes newer than the last merged dream), stop: there's nothing to dream about. Create no branch and change no file.
 4. **Create the branch:** `git checkout -b dream/YYYY-MM-DD`, with today's date. Never use a branch name that an auto-merge workflow watches.
 5. **Apply answered flags.** Read `dreams/flags.md`; answered flags are applied in this dream. An answer the client gave counts as evidence, so cite the session or review where they gave it. Then mark each one `closed`. Leave open flags alone, and never re-raise a dropped one.
-6. **Record the "before" metrics** (Phase 5 lists them).
+6. **Record the "before" metrics** (Phase 5 lists them): `python3 .therapy/scripts/dream_metrics.py > "$TMPDIR/dream-before.txt"`. It prints every number, measured the same way each time. Without the script, measure them by hand.
 
 ## Phase 1: Orient
 
@@ -187,6 +187,7 @@ Protocol or structure problems you noticed. Make no edits for these.
 Answers to the five questions in Phase 4.
 
 ## Metrics (before → after)
+From `dream_metrics.py`, before and after:
 - Startup list bytes
 - profile.md / context/index.md / threads / mentions bytes
 - Mentions entries; Open threads
@@ -206,6 +207,7 @@ The covered sessions are full session names, suffix included (`2026-11-04b`), be
 **4. Check your own diff before committing:**
 - `git diff --name-only` must list nothing under `sessions/` or `.therapy/memory/`, and none of the files in rule 6. If it does, undo those changes with `git checkout -- <path>`.
 - `git diff --stat`: if an edited file grew, the only acceptable reasons are a PROMOTE or a new fact session end missed, named in the report. Otherwise, tighten it.
+- Run `dream_metrics.py` again for the "after" column. Use its "projected after merge" startup figure as the "after" startup bytes: the plain figure still counts the in-range session notes, which only leave the startup list once the review marks the dream merged.
 
 **5. Commit once and push the branch.** Don't merge it.
 ```bash

@@ -162,7 +162,9 @@ Open `templates/startup-dream-additions.py`. It has three blocks:
 - **Block B (functions):** **replace** the existing `recent_sessions()` with the whole block. The new `recent_sessions()` behaves the same as before, plus the undreamed sessions.
 - **Block C:** in `main()`, after the last status line (expired Active entries) and before the reading list. Remove the leading `#` and one space from each line, keeping the 4-space indentation. Leave out the four "Dream flags" lines if decision 1 was no.
 
-Tune `DREAM_DUE_BYTES` to this install. Run the script once and sum the reading list's bytes (`… | while read f; do wc -c < "$f"; done | awk '{s+=$1} END {print s}'`). Set the threshold about 10% above today's number, so it only fires on real growth.
+Copy `templates/dream_metrics.py` to `.therapy/scripts/dream_metrics.py`, next to `startup.py`. It imports the startup script and prints every number a dream report records, measured the same way each time. Adapt `SIZED_FILES` (the files whose size the report tracks) to this install. Lines for things this install doesn't have (a thread registry, `mentions.md`, summary blocks) are left out on their own.
+
+Tune `DREAM_DUE_BYTES` to this install. Run `python3 .therapy/scripts/dream_metrics.py` and read its "Startup list bytes" line. Set the threshold about 10% above today's number, so it only fires on real growth.
 
 Test it (all must pass):
 
@@ -174,6 +176,7 @@ python3 .therapy/scripts/startup.py; echo "exit $?"
 - After the first merged dream with no newer sessions, it prints `Dream: not due (… 0 undreamed)`.
 - If `dreams/flags.md` has an open flag, it prints a "Dream flags" line naming it.
 - The reading list is unchanged apart from undreamed session notes being added.
+- `python3 .therapy/scripts/dream_metrics.py` exits 0 and prints a "Startup list bytes" line. If it says startup.py is missing something, a block above wasn't pasted in.
 
 ### 3.3 CLAUDE.md
 
@@ -322,6 +325,8 @@ Log both in `.therapy/maintainer-notes.md`.
 4. Nothing is trimmed until the next threads pass comes round in the rotation. Review its `LIBRARY · ARCHIVE` lines like any other change: check that no do-not-raise rule or boundary was lost.
 
 **Printed registry sections count toward the startup size.** If you apply the same-day `opus-5-5-rebaseline` update (startup prints only the registry's open therapeutic and shelved sections), add the BLOCK C line `startup_bytes += len(threads.encode()) if threads else 0` from `templates/startup-dream-additions.py`. Without it, the dream threshold stops seeing those sections. The startup size drops by the part no longer read, so re-check `DREAM_DUE_BYTES`.
+
+**A metrics script** (needs part 3). Copy `templates/dream_metrics.py` to `.therapy/scripts/` and adapt `SIZED_FILES`. In `.therapy/protocols/dream.md`, copy from `templates/dream.md`: Phase 0 step 6 (record the "before" metrics with the script), the "From `dream_metrics.py`" line under the report's Metrics heading, and the last bullet of Phase 5 step 4 (run it again, and use "projected after merge" as the "after" startup figure). Test: it exits 0 and prints a "Startup list bytes" line.
 
 Log it in `.therapy/maintainer-notes.md`.
 
