@@ -121,19 +121,24 @@ def notes_mentioning(path, after, upto):
 def notes_cited(path, after, upto):
     """Session notes the file cites by date (2026-10-19, 10-19, 10-07b), in stem order.
 
-    A short date with no year is read as the install's year; a suffix that has no
-    note of its own falls back to that day's plain note."""
+    A short date with no year is read as the install's year. A date with a suffix
+    (07-02d) means that note. A bare date (07-02), or a suffix with no note of
+    its own, means every note from that day (07-02, 07-02b, 07-02c, 07-02d):
+    files often cite the day when the evidence is in a lettered note."""
     text = (ROOT / path).read_text(encoding="utf-8")
     sizes = {name[:-3]: (ROOT / "sessions" / name).stat().st_size for _, name in startup.session_files()}
+    by_day = {}
+    for st in sizes:
+        by_day.setdefault(st[:10], []).append(st)
     year = min(sizes)[:4] if sizes else "2026"
     found = set()
     for m in CITE_RE.finditer(text):
         day = f"{m.group(1) or year}-{m.group(2)}-{m.group(3)}"
         stem = day + m.group(4)
-        if stem in sizes:
+        if m.group(4) and stem in sizes:
             found.add(stem)
-        elif day in sizes:
-            found.add(day)
+        else:
+            found.update(by_day.get(day, []))
     return [(st, sizes[st]) for st in sorted(found)
             if not (after and st <= after) and st <= upto]
 

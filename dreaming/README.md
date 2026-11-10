@@ -124,6 +124,7 @@ Sage's answers were: flags may be asked in sessions (one at a time, gently), vis
 
 ## Changelog
 
+- **2026-11-10:** **Fix:** `audit_next.py` gave a file only the plain note for a date it cites (07-02), when the evidence was often in that day's lettered notes (07-02b, 07-02d). A plain date now brings in every note from that day.
 - **2026-11-09:**
   - **Fix:** a session held later on the day a dream merged (`…b`) was treated as covered, dropped off the startup list and never dreamed. "Undreamed" now compares full session names, and the dream index records them.
   - **New:** audit dreams (part 4).
