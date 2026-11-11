@@ -125,6 +125,8 @@ Sage's answers were: flags may be asked in sessions (one at a time, gently), vis
 
 ## Changelog
 
+- **2026-11-11:**
+  - **Change:** dream review records quoted words the client confirmed in the flag's Answer (`Confirmed words: …`), so the base patch's evidence check treats them as backed. See INSTALL.md, "Updating an install that already has dreams (2026-11-11)".
 - **2026-11-10:**
   - **Fix:** `audit_next.py` gave a file only the plain note for a date it cites (07-02), when the evidence was often in that day's lettered notes (07-02b, 07-02d). A plain date now brings in every note from that day.
   - **New:** length limits for thread entries in the threads library pass (description ~400 characters of current state, Sessions = first + latest three, Surfacing in one or two sentences). Folding dated add-ons kept the registry's length; now the pass cuts it. See INSTALL.md, "Updating an install that already has dreams (2026-11-10)".

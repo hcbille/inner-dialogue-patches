@@ -37,7 +37,7 @@ The client can say "keep the rest" at any point.
 
 For each flag in the report, the client either:
 
-- **answers it now:** record the answer in `dreams/flags.md` (`answered`, today's date, their answer in their own words) and make the resulting change on the branch;
+- **answers it now:** record the answer in `dreams/flags.md` (`answered`, today's date, their answer in their own words) and make the resulting change on the branch. When they confirm quoted words that no session note has, and those words stay or go back in quotation marks, end the Answer with `Confirmed words: "…" · "…"`. If the base patch's `evidence_check.py` is installed, it counts the Answer of an answered flag as evidence, and nothing else in a flag. So list only words they confirmed, never words they turned down;
 - **saves it for a session:** leave it `open`, so the assistant can ask it gently later (`.therapy/protocols/dream-flags.md`);
 - **drops it:** mark it `dropped`. It's never asked again.
 

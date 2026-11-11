@@ -56,8 +56,11 @@ base/
 
 If you have the `dreaming` patch, this applies unchanged. Session end still captures, and the dream's "never invent" rule covers what dreams write.
 
+**Later the same day: quotes the client confirmed in a dream review count as evidence.** When the client confirms in review that quoted words no note has are theirs, those words stay in quotation marks. The first version of the check kept flagging them at every later commit that touched the line. To pick this up, copy `scripts/evidence_check.py` again, and keep your own `SKIP` entries. It now also reads the Answer of each answered flag in `dreams/flags.md`, and never the Question. Without the dreaming patch there is no flags file, so nothing changes. With it, apply the matching `dream-review.md` change from the dreaming patch's INSTALL.md (2026-11-11).
+
 ## Changelog
 
+- **2026-11-11 (later):** **Change:** `evidence_check.py` also counts the Answer of an answered flag in `dreams/flags.md`, where a dream review records quoted words the client confirmed. Flag Questions never count. No effect without the dreaming patch.
 - **2026-11-11:** **New:** an evidence rule for session end (exact quotes only, also written in the note; the assistant's lines credited to the assistant; the kind of claim kept; pasted material carried into the note; note first) and `scripts/evidence_check.py`, which lists quotes added to `profile.md` or `context/` that no session note has. See "Updating an install that already has base (2026-11-11)".
 
 ## Relationship to the dreaming patch

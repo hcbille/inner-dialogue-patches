@@ -6,7 +6,9 @@ the commit. Audits of a long-running install kept finding quotation marks around
 words no session note has: a paraphrase, the assistant's own line, or a detail
 from a pasted chat. Every quote added to profile.md or context/ must appear word
 for word in sessions/ (or in a text file under attachments/, if the install keeps
-one), so a later review can trace it.
+one), so a later review can trace it. With the dreaming patch installed, the
+Answer of an answered flag in dreams/flags.md also counts: that's where a dream
+review records quoted words the client confirmed.
 
 Run from the install root:
     python3 .therapy/scripts/evidence_check.py               # uncommitted changes
@@ -50,7 +52,30 @@ def evidence():
     for folder, pattern in (("sessions", "*.md"), ("attachments", "**/*.md"), ("attachments", "**/*.txt")):
         for f in (ROOT / folder).glob(pattern):
             parts.append(norm(f.read_text(encoding="utf-8", errors="ignore")))
+    parts.extend(norm(a) for a in confirmed_answers())
     return "".join(parts)
+
+
+def confirmed_answers():
+    """The **Answer:** text of every answered flag in dreams/flags.md.
+
+    When the client confirms quoted words in a dream review, the review writes
+    them into the flag's Answer (dream-review.md, the flags step). Only the
+    Answer counts, never the Question, since a question quotes words the client
+    may have turned down. Without the dreaming patch there is no flags file, and
+    this returns nothing.
+    """
+    f = ROOT / "dreams" / "flags.md"
+    if not f.exists():
+        return []
+    out = []
+    for block in re.split(r"^### ", f.read_text(encoding="utf-8", errors="ignore"), flags=re.M)[1:]:
+        if not re.search(r"^- \*\*Status:\*\*.*\banswered\b", block, flags=re.M):
+            continue
+        m = re.search(r"^- \*\*Answer:\*\*(.*?)(?=^- \*\*|\Z)", block, flags=re.M | re.S)
+        if m:
+            out.append(m.group(1))
+    return out
 
 
 def git(*args):
@@ -93,7 +118,7 @@ def main():
             if not all(norm(p) in ev for p in pieces):
                 missing.append((path, quote))
     if not missing:
-        print(f"Evidence check: {checked} quotes added, all found in sessions/.")
+        print(f"Evidence check: {checked} quotes added, all found in the evidence.")
         return 0
     print(f"Evidence check: {len(missing)} of {checked} added quotes aren't in any session note.")
     print("For each: copy the exact words into today's note, take the quotation marks off and")

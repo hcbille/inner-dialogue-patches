@@ -330,6 +330,16 @@ Log both in `.therapy/maintainer-notes.md`.
 
 Log it in `.therapy/maintainer-notes.md`.
 
+## Updating an install that already has dreams (2026-11-11)
+
+**Confirmed words go in the flag's Answer** (only matters if you also have the `base` patch's `evidence_check.py`). When the client confirms in a review that quoted words no session note has are theirs, record those words where the evidence check can find them. Otherwise the check flags them as unbacked every time the line is touched again.
+
+1. In `.therapy/protocols/dream-review.md`, the flags step: replace the "answers it now" bullet with the one in `templates/dream-review.md`. It ends the Answer with `Confirmed words: "…" · "…"`.
+2. Copy the base patch's updated `scripts/evidence_check.py` (see base `README.md`, "Updating an install that already has base (2026-11-11)").
+3. Optional: for flags already answered "these are mine", add the confirmed words to their Answers, if the words are back in quotation marks.
+
+Log it in `.therapy/maintainer-notes.md`.
+
 ## Verify
 
 - `dreams/index.md` and `dreams/flags.md` exist, and keep the `## Log`, `## Open` and `## Closed` headings.
