@@ -54,6 +54,13 @@ If multiple sessions occur on the same date, append a letter suffix: `2026-05-31
 - [List every person, place, concept, or event from `context/` that came up directly in this session. One line each. This list drives steps 5–6 below — do not skip it.]
 ```
 
+**The note is the evidence for everything after it.** Steps 3–7 write only what this note (or an earlier one) holds. Every fact, quote, date and attribution that goes into `profile.md` or `context/` must be findable here, because the session note is the only record a later review can check a context file against. In the reference install, two audits of older context files found over a hundred lines that had drifted at session end: quotes that were really paraphrases, the assistant's own lines put in the client's mouth, details from pasted chats that never reached a note. So:
+- **Quotes are exact.** Quotation marks only for words someone actually said or wrote, copied from the conversation, and the same words appear in this note. A paraphrase goes without quotation marks, here and in every file.
+- **Say whose words they are.** A line the assistant offered stays the assistant's ("offered…"), even when the client agreed with it. If the client took it up, quote their own reply.
+- **Keep the kind of claim.** The assistant's reads are written as reads ("seems to", "the read is"), never as facts about the client. Jokes, hopes and plans stay marked as what they are.
+- **Pasted material counts too.** If the client pasted a chat, letter, email or screenshot and a detail from it goes into a context file, put that detail in this note as well, quoted as pasted.
+- **Note first.** If you reach for a detail in Steps 3–7 that this note doesn't have, add it here first, or leave it out.
+
 ---
 
 ## Step 3 — Add to `sessions/index.md`
@@ -98,6 +105,8 @@ If multiple sessions occur on the same date, append a letter suffix: `2026-05-31
 
 ## Step 5 — Work through the "Context Touched Today" list
 
+Everything written here follows Step 2's evidence rule: only what the note holds, quotes word for word.
+
 For each item on the list:
 - If it has a context file: read it, then update if anything significant shifted.
 - If it doesn't have a context file but has enough depth: create it and add to `context/index.md`.
@@ -135,6 +144,8 @@ This is what lets a name that keeps recurring without ever quite being "enough" 
 ---
 
 ## Step 8 — Save to GitHub (only if this vault is a git repo)
+
+**Evidence check first.** Run `python3 .therapy/scripts/evidence_check.py`. It finds every quote added to `profile.md` or `context/` that isn't word for word in a session note. Fix each one it lists: if the client (or someone they quoted) really said it, copy the exact words into today's note. If it was a paraphrase, take the quotation marks off. If it was the assistant's line, credit it to the assistant. Run it again until it reports nothing missing. It can't check facts written without quotation marks, so read your own diff for those against Step 2's rule. (It needs git to see what changed; in a vault without git, do that read by hand.)
 
 ```bash
 git add -A && git commit -m "Session notes $(date +%Y-%m-%d)" && git push origin HEAD

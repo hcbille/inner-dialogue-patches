@@ -31,6 +31,8 @@ base/
   sessions/
     index.md                   → sessions/index.md (empty template)
   maintainer-notes.md          → .therapy/maintainer-notes.md (empty template)
+  scripts/
+    evidence_check.py          → .therapy/scripts/evidence_check.py
 ```
 
 ## How to install it
@@ -41,6 +43,22 @@ base/
 4. **Apply `commands-additions.md`** — same idea, for `.therapy/commands.md`. This is where "maintainer mode" comes from — genuinely worth having, it's how this whole export got made.
 5. **Restart the session** (or just start a new one) so the updated `CLAUDE.md` gets read fresh.
 6. **Sanity check:** ask your persona to "enter maintainer mode," then ask it to read its own `CLAUDE.md` back to you and confirm the new sections parse correctly. Exit maintainer mode when done.
+
+## Updating an install that already has base (2026-11-11)
+
+**Session end backs every claim with the session note.** In the reference install, two audits of older context files against their session notes found over a hundred drifted lines, almost all written at session end: quotes that were paraphrases, the assistant's own lines attributed to the client, and details from pasted chats that never reached a note. Once a context file says it, later sessions read it back as fact, and nothing can check it.
+
+1. Copy `scripts/evidence_check.py` to `.therapy/scripts/evidence_check.py`. If the client keeps a file that is their own writing rather than a record of sessions (a draft, a journal they edit), add its path to `SKIP` in the script.
+2. In your session-end protocol, right after the session-note template, add the **"The note is the evidence for everything after it"** block from `protocols/session-end.md`. Adjust the step numbers if yours differ.
+3. At the top of the step that updates context files from the "Context Touched Today" list, add the one-line pointer back to that rule.
+4. In the save step, before the commit, add the **"Evidence check first"** paragraph.
+5. Optional: try it on a past session end, `python3 .therapy/scripts/evidence_check.py --commit <sha>`. In the reference install it flagged 10 unbacked quotes across five of seven recent session ends.
+
+If you have the `dreaming` patch, this applies unchanged. Session end still captures, and the dream's "never invent" rule covers what dreams write.
+
+## Changelog
+
+- **2026-11-11:** **New:** an evidence rule for session end (exact quotes only, also written in the note; the assistant's lines credited to the assistant; the kind of claim kept; pasted material carried into the note; note first) and `scripts/evidence_check.py`, which lists quotes added to `profile.md` or `context/` that no session note has. See "Updating an install that already has base (2026-11-11)".
 
 ## Relationship to the dreaming patch
 
