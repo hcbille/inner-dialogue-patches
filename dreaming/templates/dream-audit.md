@@ -18,11 +18,12 @@ Every ground rule in `dream.md` applies unchanged: session notes are read-only a
 
 Three more, for the audit:
 
-1. **No evidence is not the same as wrong.** A claim with no supporting note is *unsupported*. Older notes are thinner than recent ones, and some facts came from places other than session notes. So:
-   - if the claim is minor and the file can say less without losing anything, soften it to what the notes do support (SUPERSEDE, citing the notes you read);
-   - if it matters (it would change how the assistant treats the client or someone else, or it's about the client themselves), leave it and FLAG it as a question;
-   - never delete a claim only because you didn't find it. Say in the report which notes you searched.
-2. **Quotes are checked word for word.** A quote in a context file must match a note. If it's a paraphrase, either make it match or drop the quotation marks. If it was the assistant's line, offered to the client and accepted, attribute it or use the client's own words from the note. (The reference install found exactly this: a reflection the assistant offered, later quoted in two files as if the client had said it.)
+1. **No evidence is not the same as wrong.** A claim with no supporting note is *unsupported*. Older notes are thinner than recent ones. Much of what's in a context file came from the client's live telling, a pasted chat or a screenshot, written at session end and never copied into the note. (In the reference install's audits, the client confirmed nearly every unsupported detail as theirs and asked for the softened ones back.) So:
+   - **leave unsupported detail as written.** Don't soften or cut a claim, a quote or a detail only because no note has it. This applies even when it's minor.
+   - **ask once per file.** Gather the file's unsupported details into a single FLAG: "These lines in X aren't in any session note. They may be from what you told or shared live. Are they right as written?" List each one briefly. Add a separate FLAG only for something that would change how the assistant treats the client or someone else, or for anything about the client's safety or health.
+   - **what still gets fixed without asking:** a claim a note *contradicts* (stale or drifted, Phase 2); a quote that's close to a note but not word for word (rule 2); the assistant's own reading written as fact about the client (relabel it as the assistant's read); and duplicates or misplaced lines.
+   - **in the report,** say which notes you searched for each unsupported claim.
+2. **Quotes are checked word for word.** A quote that matches a note only loosely is made to match it, or loses its quotation marks. A quote that matches no note at all is left as it is and goes into the file's unsupported FLAG (rule 1); don't remove it or unquote it. If it was the assistant's line, offered to the client and accepted, attribute it or use the client's own words from the note. (The reference install found exactly this: a reflection the assistant offered, later quoted in two files as if the client had said it.)
 3. **Stay inside the audited files.** Change only the files on this run's plan, plus `context/index.md` lines and `context/topic-links.md` entries for them. Anything you notice elsewhere goes in `dreams/backlog.md`.
 
 ---
@@ -78,7 +79,7 @@ For each file: claims checked (roughly), how many were supported / drifted / sta
 One line per change: AUDIT · OP · file · what changed · evidence (session dates).
 
 ## Unsupported claims
-Each one: the claim, the notes searched, and what was done (softened, flagged, left).
+Grouped by file, matching each file's FLAG. For each claim: the claim and the notes searched. They're all left as written and wait for the client's answer.
 
 ## Flags
 ## Profile proposals

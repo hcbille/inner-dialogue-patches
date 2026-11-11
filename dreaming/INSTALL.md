@@ -338,6 +338,12 @@ Log it in `.therapy/maintainer-notes.md`.
 2. Copy the base patch's updated `scripts/evidence_check.py` (see base `README.md`, "Updating an install that already has base (2026-11-11)").
 3. Optional: for flags already answered "these are mine", add the confirmed words to their Answers, if the words are back in quotation marks.
 
+**Audits leave unsupported detail in place and ask** (only matters if you run audit dreams). Audits used to soften minor claims no session note backed. In practice, most of those details were the client's own words from live tellings, pastes and screenshots. Audits now leave them as written and ask about them once per file.
+
+1. In `.therapy/protocols/dream-audit.md`, replace rules 1 and 2 under "Rules" with the ones in `templates/dream-audit.md`.
+2. In the same file, in the report template, replace the "Unsupported claims" line with the template's ("Grouped by file, matching each file's FLAG…").
+3. Optional: if an earlier audit softened details the client may want back, ask them in the next dream review and restore what they confirm, with the confirmed words in the flag's Answer.
+
 Log it in `.therapy/maintainer-notes.md`.
 
 ## Verify
