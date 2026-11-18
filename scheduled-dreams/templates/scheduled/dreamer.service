@@ -1,0 +1,18 @@
+[Unit]
+Description=Scheduled dreams (ingest + longform), one tick
+Documentation=file:%h/vault/.therapy/protocols/dream-ingest.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/vault
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash %h/vault/.therapy/scripts/scheduled/run.sh
+# An agent run can take a while; run.sh caps it with timeout(1) at 4 h.
+TimeoutStartSec=5h
+Nice=10
+UMask=0077
+# run.sh logs to ~/dreamer.log; keep the journal free of anything else.
+StandardOutput=null
+StandardError=journal

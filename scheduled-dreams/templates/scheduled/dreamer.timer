@@ -1,0 +1,11 @@
+[Unit]
+Description=Run scheduled dreams every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+RandomizedDelaySec=60
+Unit=dreamer.service
+
+[Install]
+WantedBy=timers.target

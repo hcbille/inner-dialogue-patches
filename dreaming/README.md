@@ -139,7 +139,6 @@ Sage's answers were: flags may be asked in sessions (one at a time, gently), vis
   - **New:** arc-review maintenance moves to dreams as a rotating library pass (part 5; Sage's "Phase 4").
 - **2026-10-30:** first release (parts 1–3).
 
-## Not in this patch yet
+## Going further (separate, optional)
 
-Sage has one more phase planned. It will come as an update to this patch once it's built and tested:
-- **Phase 5: scheduled dreams.** A local scheduled task starts a dream when one is due. Optionally, only low-risk changes (link fixes, index trims, mentions housekeeping) merge without review. Anything describing the client always waits for review.
+This patch is complete on its own, and dreams here always run by hand on the client's machine. For installs that want more, the separate [`scheduled-dreams`](../scheduled-dreams/) patch moves the rest of session end's file writing into dreams (session end writes only the note), adds small "ingest" dreams that land behind a gate script, and can run them on a Linux server by themselves. Its first two parts still need no server.

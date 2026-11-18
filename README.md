@@ -34,6 +34,7 @@ Or work through `INSTALL.md` by hand.
 | [`near-term-event-surfacing`](near-term-event-surfacing/) | Raise events dated today or in the next two days, with a session-end fallback if they never came up. | some event tracking |
 | [`context-loader`](context-loader/) | A hook that tells the assistant which context files to read, based on what the client just said. | — |
 | [`dreaming`](dreaming/) | Offline memory consolidation between sessions, reviewed before it lands and undoable in one commit. Includes audit dreams and a research synthesis. | `base`, a git repo; `opus-5-5-rebaseline` for part 3 |
+| [`scheduled-dreams`](scheduled-dreams/) | Optional, after `dreaming`: session end writes only the note, small "ingest" dreams keep files current behind a gate, and (part 3) a Linux server runs them by itself. | `dreaming` parts 1–3, `base`, `opus-5-5-rebaseline`; a Linux server for part 3 |
 
 If you're outside the US, start with part 1 of `opus-5-5-rebaseline`.
 
@@ -45,6 +46,7 @@ If you're outside the US, start with part 1 of `opus-5-5-rebaseline`.
 4. `thread-registry`, then `no-topic-greeting-offer`
 5. `near-term-event-surfacing`, `context-loader`
 6. `dreaming`, in its five parts, after a few weeks of sessions
+7. `scheduled-dreams`, only if you want it, once dreams are routine
 
 ## Privacy
 
