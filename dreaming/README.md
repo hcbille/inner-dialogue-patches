@@ -4,6 +4,8 @@ Offline memory consolidation for an Inner Dialogue install. It runs between sess
 
 Built for Sage, the reference install, on 2026-10-30, after researching how "dreaming" works for AI agents. Anthropic, Letta and several research papers use the idea in some form; `background/research-synthesis.md` has the research. It's packaged here so any Inner Dialogue install can have it. **It contains no personal content**: everything is genericized to "the client" and "the assistant".
 
+**Self-contained, no server needed.** Everything here runs on the client's own machine; dreams are started by hand in maintainer mode. Note-only session end, ingests and scheduled dreams on a server are in the separate, optional [`scheduled-dreams`](../scheduled-dreams/) patch (see "Going further" at the end).
+
 **Prerequisites:**
 - the `base` patch, including its arc review (see "How it relates to the arc review" below);
 - maintainer mode (`base` patch);

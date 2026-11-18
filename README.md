@@ -38,6 +38,8 @@ Or work through `INSTALL.md` by hand.
 
 If you're outside the US, start with part 1 of `opus-5-5-rebaseline`.
 
+**Dreams without a server.** `dreaming` is self-contained: everything runs on the client's own machine, dreams are started by hand in maintainer mode, and no server is needed. As of 2026-11-18, the note-only session end and the scheduled dreams on a server live in the separate, optional `scheduled-dreams` patch, so `dreaming` stays this way. Install `scheduled-dreams` only if you want it; its parts 1–2 also run without a server.
+
 ## Suggested order
 
 1. `base`
